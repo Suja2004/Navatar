@@ -18,15 +18,6 @@ function BookingActionModal({
         modalType === 'delete' ? 'Cancel Booking' :
             'Slot Unavailable';
 
-    console.log('BookingActionModal rendered with:', {
-        isOpen,
-        modalType,
-        selectedDate,
-        selectedStartTime,
-        selectedEndTime,
-        message
-    });
-
     return (
         <Modal isOpen={isOpen} onClose={onClose} title={title}>
             {modalType === 'confirm' && selectedDate && (
