@@ -46,7 +46,7 @@ function TimeSelectorModal({
         <div className="modal-footer">
           <button className="btn btn-danger" onClick={onClose}>Cancel</button>
           <button
-            className="btn btn-primary"
+            className="btn btn-primary check-availability"
             onClick={onCheckAvailability}
             disabled={!selectedStartTime || !selectedEndTime || selectedStartTime >= selectedEndTime}
           >

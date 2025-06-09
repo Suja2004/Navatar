@@ -91,6 +91,13 @@ function BookingPage() {
     };
 
     const handleCheckAvailability = () => {
+        if (!selectedDate || !selectedStartTime || !selectedEndTime) {
+            setPopupMessage('Please select a date and both start and end times.');
+            setPopupType('error');
+            setPopup(true);
+            setTimeout(() => setPopup(false), delay);
+            return;
+        }
         const newStart = parse(`${format(selectedDate, 'yyyy-MM-dd')} ${selectedStartTime}`, 'yyyy-MM-dd HH:mm', new Date());
         if (isSameDay(Date.now(), selectedDate) && isBefore(newStart, new Date())) {
             setMessage("You cannot book a slot in the past.");

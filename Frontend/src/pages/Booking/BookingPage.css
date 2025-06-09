@@ -148,6 +148,16 @@ li.no-bookings {
   margin-left: auto;
 }
 
+.check-availability:disabled {
+  cursor: not-allowed;
+  background: #6a6a6a;
+  color: #828282;
+}
+
+.check-availability:disabled:hover {
+  scale: 1;
+}
+
 .popup {
   position: fixed;
   top: 50px;
