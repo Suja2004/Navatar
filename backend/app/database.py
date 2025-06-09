@@ -1,9 +1,10 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+import os
 
-# Use your Neon PostgreSQL connection string
-SQLALCHEMY_DATABASE_URL = "postgresql+psycopg2://neondb_owner:npg_8HPbhwmGUN6t@ep-white-salad-a1dn62ah-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require"
+# Load the database URL from the environment variable
+SQLALCHEMY_DATABASE_URL = os.getenv("SQLALCHEMY_DATABASE_URL")
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
