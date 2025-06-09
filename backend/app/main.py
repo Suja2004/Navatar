@@ -12,8 +12,10 @@ models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
 origins = [
-    "http://localhost",
     "http://localhost:5173",
+    "http://localhost:5174",
+    "http://localhost:5173/booking",
+    "http://localhost:5174/booking",
     "http://localhost:8080",
 ]
 
