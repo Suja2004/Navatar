@@ -52,7 +52,6 @@ async def custom_exception_handler(request: Request, exc: Exception):
         response.headers["Access-Control-Allow-Headers"] = "*"
     return response
 
-
 @app.get("/")
 def read_root():
     return {"message": "FastAPI on Vercel"}
