@@ -1,0 +1,92 @@
+.video-consultation-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--off-white);
+}
+
+.consultation-container {
+  flex: 1;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.consultation-header {
+  text-align: center;
+}
+
+.consultation-header h1 {
+  color: var(--primary-blue);
+  margin-bottom: 0.5rem;
+}
+
+.consultation-header p {
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+.consultation-content {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 1.5rem;
+  flex: 1;
+  min-height: 500px;
+}
+
+.video-section, .controls-section {
+  min-height: 100%;
+}
+
+.patient-info {
+  padding: 1.5rem;
+}
+
+.patient-info h3 {
+  color: var(--primary-blue);
+  margin-bottom: 1.5rem;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-label {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.info-value {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+@media (max-width: 992px) {
+  .consultation-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .video-section, .controls-section {
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .consultation-container {
+    padding: 1.5rem 0.75rem;
+  }
+  
+  .info-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}

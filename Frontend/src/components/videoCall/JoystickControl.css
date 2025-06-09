@@ -1,0 +1,158 @@
+.joystick-container {
+  padding: 1.5rem;
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.joystick-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.joystick-title h3 {
+  margin: 0;
+  color: var(--primary-blue);
+}
+
+.status-indicator {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.status-indicator.ready {
+  background-color: rgba(72, 187, 120, 0.1);
+  color: var(--success-green);
+}
+
+.status-indicator.moving {
+  background-color: rgba(236, 201, 75, 0.1);
+  color: var(--warning-yellow);
+}
+
+.joystick-stats {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 2rem 0;
+}
+
+.stat {
+  height: 100px;
+  width: 100px;
+  background-color: var(--off-white);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  flex: 1;
+}
+
+.stat-label {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.stat-value {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 1.125rem;
+}
+
+.joystick-base {
+  width: 200px;
+  height: 200px;
+  background-color: var(--light-gray);
+  border-radius: 50%;
+  position: relative;
+  margin: 0 auto;
+  touch-action: none;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.joystick-handle {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(0, 0);
+  margin: -40px 0 0 -40px;
+  cursor: grab;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.2s ease;
+}
+
+.joystick-handle:active {
+  cursor: grabbing;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.joystick-direction-indicator {
+  position: absolute;
+  color: var(--medium-gray);
+  font-size: 1.5rem;
+}
+
+.joystick-direction-indicator.forward {
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.joystick-direction-indicator.right {
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+
+.joystick-direction-indicator.backward {
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.joystick-direction-indicator.left {
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+}
+
+.control-instructions {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.control-instructions p {
+  margin-bottom: 0.5rem;
+}
+
+/* Make the joystick responsive */
+@media (max-width: 768px) {
+  .joystick-base {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .joystick-handle {
+    width: 60px;
+    height: 60px;
+    margin: -30px 0 0 -30px;
+  }
+}
