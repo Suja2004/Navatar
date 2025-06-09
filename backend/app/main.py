@@ -14,9 +14,9 @@ app = FastAPI()
 origins = [
     "http://localhost:5173",
     "http://localhost:5174",
-    "http://localhost:5173/booking",
-    "http://localhost:5174/booking",
     "http://localhost:8080",
+    "https://your-frontend-app.vercel.app",
+    "https://navatar-ashen.vercel.app",
 ]
 
 app.add_middleware(
