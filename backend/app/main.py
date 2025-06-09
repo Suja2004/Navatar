@@ -7,6 +7,10 @@ from typing import List
 from . import crud, models, schemas
 from .database import SessionLocal, engine
 
+from fastapi import Request
+from fastapi.responses import JSONResponse
+
+
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
@@ -27,13 +31,26 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 def get_db():
     db = SessionLocal()
     try:
         yield db
     finally:
         db.close()
+
+@app.exception_handler(Exception)
+async def custom_exception_handler(request: Request, exc: Exception):
+    response = JSONResponse(
+        status_code=500,
+        content={"detail": "Internal server error"}
+    )
+    origin = request.headers.get('origin')
+    if origin in origins:
+        response.headers["Access-Control-Allow-Origin"] = origin
+        response.headers["Access-Control-Allow-Credentials"] = "true"
+        response.headers["Access-Control-Allow-Methods"] = "*"
+        response.headers["Access-Control-Allow-Headers"] = "*"
+    return response
 
 
 @app.get("/")
