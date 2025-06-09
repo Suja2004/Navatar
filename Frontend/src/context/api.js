@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8000";
+const API_URL = "https://navatar-ashen.vercel.app";
 
 export async function getBookings() {
   const response = await fetch(`${API_URL}/bookings/`);
