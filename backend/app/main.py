@@ -27,6 +27,9 @@ def get_db():
     finally:
         db.close()
 
+@app.get("/")
+def read_root():
+    return {"message": "FastAPI on Vercel"}
 
 @app.post("/bookings/", response_model=schemas.Booking)
 def create_booking(booking: schemas.BookingCreate, db: Session = Depends(get_db)):
