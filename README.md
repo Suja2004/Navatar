@@ -8,14 +8,15 @@ A modern booking app for remote consultations, featuring a FastAPI backend and a
 
 **1. Install Dependencies**
 
-Backend (FastAPI):  
+**Backend (FastAPI):**  
 Go to the backend folder and install dependencies:  
 ```
 cd backend
 pip install -r requirements.txt
 ```
+*Make sure `psycopg2-binary` is in your requirements for PostgreSQL support.*
 
-Frontend (React/Vite):  
+**Frontend (React/Vite):**  
 Go to the frontend folder and install dependencies:  
 ```
 cd frontend
@@ -40,13 +41,13 @@ From the frontend directory:
 ```
 npm run dev
 ```
-The frontend will be available at [http://localhost:5713](http://localhost:3000).
+The frontend will be available at [http://localhost:5173](http://localhost:5173).
 
 ---
 
 ## 📁 Project Structure
 
-- **backend/**: FastAPI backend (API, database, models)
+- **backend/**: FastAPI backend (API, Neon PostgreSQL database, models)
 - **frontend/**: React/Vite frontend (UI, booking logic, notifications)
 
 ---
@@ -78,12 +79,5 @@ Visit [http://localhost:8000/docs](http://localhost:8000/docs) for interactive A
 
 ## 📚 Technologies
 
-- **Backend:** FastAPI, SQLite, Python
+- **Backend:** FastAPI, PostgreSQL (Neon), Python
 - **Frontend:** React, Vite, date-fns
-
----
-
-## 🛠️ Troubleshooting
-
-- **CORS errors:** Ensure your backend allows requests from http://localhost:5713
-- **Invalid time value:** Check that all date fields are valid before passing to components
