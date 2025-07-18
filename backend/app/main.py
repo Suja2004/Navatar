@@ -4,7 +4,7 @@ from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from typing import List
-from .router import hospital, navatar, doctor, nurse, admin, booking
+from .router import hospital, navatar, doctor, nurse, session, admin, booking
 
 app = FastAPI(
     title="Hospital Management API",
@@ -45,3 +45,4 @@ app.include_router(doctor.router)
 app.include_router(nurse.router)
 app.include_router(admin.router)
 app.include_router(booking.router)
+app.include_router(session.router)

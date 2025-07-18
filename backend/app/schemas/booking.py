@@ -1,18 +1,32 @@
-from pydantic import BaseModel, Field
-from datetime import datetime
+from pydantic import BaseModel
+from typing import Optional
+from datetime import date, time, datetime
+from ..models import BookingStatus
+
 
 class BookingBase(BaseModel):
-    date: str
-    start_time: str
-    end_time: str
-    user_id: str | None = None
+    doctor_id: int
+    navatar_id: int
+    nurse_id: Optional[int] = None
+    date: date
+    start_time: time
+    end_time: time
+    location: str
+    status: BookingStatus
+
 
 class BookingCreate(BookingBase):
     pass
 
-class Booking(BookingBase):
-    id: int
+
+class BookingUpdateStatus(BaseModel):
+    status: BookingStatus
+
+
+class BookingOut(BookingBase):
+    booking_id: int
     created_at: datetime
+    updated_at: datetime
 
     class Config:
         from_attributes = True
