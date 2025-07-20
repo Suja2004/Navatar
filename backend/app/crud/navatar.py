@@ -6,10 +6,10 @@ from typing import Optional
 
 
 def create_navatar(db: Session, navatar: NavatarCreate):
-    hospital = db.query(Hospital).filter(
-        Hospital.hospital_id == navatar.hospital_id).first()
-    if not hospital:
-        raise HTTPException(status_code=404, detail="Hospital not found")
+    # hospital = db.query(Hospital).filter(
+    #     Hospital.hospital_id == navatar.hospital_id).first()
+    # if not hospital:
+    #     raise HTTPException(status_code=404, detail="Hospital not found")
 
     existing = db.query(Navatar).filter(
         Navatar.navatar_name == navatar.navatar_name,
