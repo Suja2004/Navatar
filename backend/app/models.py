@@ -187,6 +187,8 @@ class Nurse(Base):
     # password = Column(String, nullable=False)
     phone = Column(String, nullable=True)
     assigned_doctor_id = Column(Integer, ForeignKey("doctors.id"))
+    hospital_id = Column(Integer, ForeignKey(
+        "hospital.hospital_id"), nullable=False)
     created_at = Column(DateTime, nullable=False, default=func.now())
     updated_at = Column(DateTime, nullable=False,
                         default=func.now(), onupdate=func.now())
