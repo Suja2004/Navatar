@@ -69,8 +69,7 @@ def delete_nurse(db: Session, nurse_id: int):
 def list_nurses_for_hospital(db: Session, hospital_id: int):
     nurses = (
         db.query(Nurse)
-        .join(Doctor, Nurse.assigned_doctor_id == Doctor.id)
-        .filter(Doctor.hospital_id == hospital_id)
+        .filter(Nurse.hospital_id == hospital_id)
         .all()
     )
     return nurses
