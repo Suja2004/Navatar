@@ -184,7 +184,7 @@ class Nurse(Base):
     gender = Column(Enum(Gender), nullable=False)
     department = Column(Enum(NurseDepartment), nullable=False)
     email = Column(String, unique=True, nullable=False)
-    password = Column(String, nullable=False)
+    # password = Column(String, nullable=False)
     phone = Column(String, nullable=True)
     assigned_doctor_id = Column(Integer, ForeignKey("doctors.id"))
     created_at = Column(DateTime, nullable=False, default=func.now())
