@@ -13,7 +13,7 @@ class NurseBase(BaseModel):
 
 
 class NurseCreate(NurseBase):
-    assigned_doctor_id: int
+    assigned_doctor_id: Optional[int] = None
 
 
 class NurseUpdate(BaseModel):
