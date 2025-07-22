@@ -149,7 +149,7 @@ class Admin(Base):
     hospital_id = Column(Integer, ForeignKey(
         "hospital.hospital_id"), nullable=False)
     email = Column(String, unique=True, nullable=False)
-    password = Column(String, nullable=False)
+    # password = Column(String, nullable=False)
     created_at = Column(DateTime, nullable=False, default=func.now())
     updated_at = Column(DateTime, nullable=False,
                         default=func.now(), onupdate=func.now())
@@ -163,7 +163,7 @@ class Doctor(Base):
     gender = Column(Enum(Gender), nullable=False)
     department = Column(Enum(DoctorDepartment), nullable=False)
     email = Column(String, unique=True, nullable=False)
-    password = Column(String, nullable=False)
+    # password = Column(String, nullable=False)
     phone = Column(String, nullable=False)
     hospital_id = Column(Integer, ForeignKey(
         "hospital.hospital_id"), nullable=False)
