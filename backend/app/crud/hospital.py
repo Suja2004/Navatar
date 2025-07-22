@@ -97,3 +97,10 @@ def search_hospitals(db: Session, search_query: Optional[str] = None):
     if search_query:
         query = query.filter(Hospital.hospital_name.ilike(f"%{search_query}%"))
     return query.all()
+
+
+def get_hospital_by_id(hospital_id: int, db: Session):
+    hospital = db.query(Hospital).filter(Hospital.hospital_id == hospital_id).first()
+    if not hospital:
+        raise HTTPException(status_code=404, detail="Hospital not found")
+    return hospital
