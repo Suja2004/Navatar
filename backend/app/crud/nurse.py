@@ -7,7 +7,10 @@ from fastapi import HTTPException
 from sqlalchemy.exc import IntegrityError
 
 
-def create_nurse(db: Session, doctor_id: int, nurse: NurseCreate):
+def create_nurse(db: Session, hospital_id: int, nurse: NurseCreate):
+    data = nurse.dict()
+    doctor_id = data["assigned_doctor_id"]
+
     if not db.query(Doctor).get(doctor_id):
         raise HTTPException(status_code=404, detail="Doctor not found")
 
@@ -16,10 +19,7 @@ def create_nurse(db: Session, doctor_id: int, nurse: NurseCreate):
         raise HTTPException(
             status_code=400, detail="Nurse with this email already exists")
 
-    data = nurse.dict()
-    data["assigned_doctor_id"] = doctor_id
-
-    db_nurse = Nurse(**data)
+    db_nurse = Nurse(**data, hospital_id=hospital_id)
     db.add(db_nurse)
     db.commit()
     db.refresh(db_nurse)

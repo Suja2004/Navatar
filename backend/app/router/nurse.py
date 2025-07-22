@@ -8,9 +8,9 @@ from ..crud import nurse as nurse_crud
 router = APIRouter(prefix="/admin", tags=["Nurses"])
 
 
-@router.post("/doctors/{doctor_id}/nurses", response_model=NurseOut)
-def create_nurse(doctor_id: int, nurse: NurseCreate, db: Session = Depends(get_db)):
-    return nurse_crud.create_nurse(db, doctor_id, nurse)
+@router.post("/doctors/{hospital_id}/nurses", response_model=NurseOut)
+def create_nurse(hospital_id: int, nurse: NurseCreate, db: Session = Depends(get_db)):
+    return nurse_crud.create_nurse(db, hospital_id, nurse)
 
 
 @router.get("/doctors/{doctor_id}/nurses", response_model=List[NurseOut])
