@@ -44,7 +44,7 @@ def check_booking_overlap(
     if doctor_booking:
         return "Doctor already has a booking in this time slot."
 
-    return None  
+    return None
 
 
 def create_booking(db: Session, booking: booking_schema.BookingCreate):
@@ -75,6 +75,10 @@ def get_booking(db: Session, booking_id: int):
     if not booking:
         raise HTTPException(status_code=404, detail="Booking not found")
     return booking
+
+
+def get_bookings_by_hospital(db: Session, hospital_id: int):
+    return db.query(Booking).join(Doctor).filter(Doctor.hospital_id == hospital_id).all()
 
 
 def get_all_bookings(db: Session):
