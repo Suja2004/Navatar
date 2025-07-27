@@ -36,3 +36,8 @@ def delete_nurse(nurse_id: int, db: Session = Depends(get_db)):
 @router.get("/hospitals/{hospital_id}/nurses", response_model=List[NurseOut])
 def list_nurses_for_hospital(hospital_id: int, db: Session = Depends(get_db)):
     return nurse_crud.list_nurses_for_hospital(db, hospital_id)
+
+
+@router.get("/nurses/by-email/{email}", response_model=NurseOut)
+def get_nurse_by_email(email: str, db: Session = Depends(get_db)):
+    return nurse_crud.get_nurse_by_email(db, email)

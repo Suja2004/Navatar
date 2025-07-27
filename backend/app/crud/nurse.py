@@ -26,6 +26,14 @@ def create_nurse(db: Session, hospital_id: int, nurse: NurseCreate):
     return db_nurse
 
 
+def get_nurse_by_email(db: Session, email: str):
+    nurse = db.query(Nurse).filter(Nurse.email == email).first()
+    if not nurse:
+        raise HTTPException(
+            status_code=404, detail="Nurse not found with this email")
+    return nurse
+
+
 def get_nurse(db: Session, nurse_id: int):
     nurse = db.query(Nurse).get(nurse_id)
     if not nurse:
