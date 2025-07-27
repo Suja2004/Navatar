@@ -49,6 +49,14 @@ def update_doctor(db: Session, doctor_id: int, updates: DoctorUpdate):
     return doctor
 
 
+def get_doctor_by_email(db: Session, email: str):
+    doctor = db.query(Doctor).filter(Doctor.email == email).first()
+    if not doctor:
+        raise HTTPException(
+            status_code=404, detail="Doctor not found with this email")
+    return doctor
+
+
 def list_doctors_by_hospital(db: Session, hospital_id: int):
     return db.query(Doctor).filter(Doctor.hospital_id == hospital_id).all()
 
