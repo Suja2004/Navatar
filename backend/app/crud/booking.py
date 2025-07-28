@@ -58,9 +58,18 @@ def create_booking(db: Session, booking: booking_schema.BookingCreate):
         if not navatar:
             raise HTTPException(status_code=404, detail="Navatar not found")
 
-    if check_booking_overlap(db, doctor.hospital_id, booking.date, booking.start_time, booking.end_time, booking.doctor_id, booking.navatar_id):
-        raise HTTPException(
-            status_code=400, detail="Booking overlaps with an existing booking.")
+    conflict_message = check_booking_overlap(
+        db,
+        doctor.hospital_id,
+        booking.date,
+        booking.start_time,
+        booking.end_time,
+        booking.doctor_id,
+        booking.navatar_id
+    )
+
+    if conflict_message:
+        raise HTTPException(status_code=400, detail=conflict_message)
 
     db_booking = Booking(**booking.dict())
     db.add(db_booking)
