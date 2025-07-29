@@ -9,14 +9,15 @@ class AdminBase(BaseModel):
 
 
 class AdminCreate(AdminBase):
-    password: str
+  #  password: str
+    pass
 
 
 class AdminUpdate(BaseModel):
     username: Optional[str] = None
     email: Optional[EmailStr] = None
     is_active: Optional[bool] = None
-    password: Optional[str] = None
+   # password: Optional[str] = None
     pass
 
 
