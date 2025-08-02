@@ -23,6 +23,7 @@ origins = [
     "http://localhost:8080",
     "http://localhost:3000",
     "https://navatar-user.vercel.app",
+    "https://navatar-interface.vercel.app",
     "https://navatar-ashen.vercel.app",
 ]
 
